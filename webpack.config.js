@@ -7,9 +7,10 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'build'),
+  style: path.join(__dirname, 'style')
 };
 
-console.log("webpack: ", PATHS.app, PATHS.build);
+console.log("webpack PATHS: ", PATHS.app, PATHS.build);
 
 const common = {
   entry: {
@@ -17,6 +18,7 @@ const common = {
   },
   output: {
     path: PATHS.build,
+    publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
@@ -26,10 +28,10 @@ const common = {
     },
     {
       // Test expects a RegExp! Note the slashes!
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-        // Include accepts either a path or an array of paths.
-        include: PATHS.app
+      test: /\.css$/,
+      loaders: ['style', 'css'],
+      // Include accepts either a path or an array of paths.
+      include: PATHS.app
     }]
   },
   resolve: {

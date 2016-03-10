@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "mocha --compilers js:babel-core/register --require ./.enzyme_setup.js 'src/**/*-test.js'",
+    "test": "mocha --compilers js:babel-core/register --require ignore-styles --require ./.enzyme_setup.js 'src/**/*-test.js'",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Sunkay",
@@ -20,9 +20,12 @@
     "babel-preset-react-hmre": "^1.1.1",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^4.0.0",
     "enzyme": "^2.0.0",
+    "ignore-styles": "^1.2.0",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "node-sass": "^3.4.2",
     "react-addons-test-utils": "^0.14.7",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",

@@ -8,8 +8,9 @@ describe('App' , () => {
   it('renders something', () => {
     const wrapper = shallow(<App />);
 
-    expect(wrapper.contains(<div>React simple starter</div>))
-      .to.equal(true);
+    //console.log(wrapper.debug());
+
+    expect(wrapper.children()).to.have.length(2);
 
   });
 

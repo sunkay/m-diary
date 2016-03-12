@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import styles from  '../style/style.css';
+import styles from  '../style/main.css';
 import Header from './header';
 import Main from './main-content';
 
@@ -9,8 +9,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <div>React simple starter</div>
-        <Main />
+        {this.props.children}
       </div>
     );
   }

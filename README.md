@@ -1,8 +1,10 @@
 # React Redux app to record medical events
 
-Interested in learning - check out this awesome tutorial by StephenGrider [Redux](https://www.udemy.com/react-redux/)?
+#Testing react components using enzyme
+Pattern for TDD using react, redux and enzyme
 
-###Getting Started###
+
+###Getting Started with this repo###
 
 There are two methods for getting started with this repo.
 
@@ -15,3 +17,5 @@ Checkout this repo, install depdencies, then start the process with the followin
 	> npm install
 	> npm start
 ```
+
+Interested in learning - check out this awesome tutorial by StephenGrider [Redux](https://www.udemy.com/react-redux/)?

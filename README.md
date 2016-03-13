@@ -1,6 +1,7 @@
 # React Redux app to record medical events
+This repo is to slowly build a redux application with sound architectural designs. TDD is hard and TDD with react/redux is not that easy either. This is an attempt to build this from scratch and document the tdd pitfalls on medium with findings. 
 
-#Testing react components using enzyme
+##Testing react components using enzyme
 Pattern for TDD using react, redux and enzyme
 
 

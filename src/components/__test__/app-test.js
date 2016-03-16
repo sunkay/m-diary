@@ -1,5 +1,5 @@
 import React from 'react';
-import { expect } from 'chai';
+import  expect  from 'expect';
 import { shallow, mount, render } from 'enzyme';
 import App from '../app';
 
@@ -10,7 +10,7 @@ describe('App' , () => {
 
     //console.log(wrapper.debug());
 
-    expect(wrapper.children()).to.have.length(2);
+    expect(wrapper.children().length).toBe(2);
 
   });
 

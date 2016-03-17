@@ -10,7 +10,7 @@ const conditions_fixture = [
 export const FETCH_CONDITIONS = 'FETCH_CONDITIONS';
 
 export function fetchConditions(){
-  console.log("actions: fetchConditions");
+  //console.log("actions: fetchConditions");
   return {
     type: FETCH_CONDITIONS,
     payload: conditions_fixture

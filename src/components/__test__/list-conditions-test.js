@@ -41,10 +41,13 @@ describe('Conditions Suite' , () => {
 
   });
 
-  it('render conditions with empty conditions', () => {
-    const { component } = setup([]);
+  it('render conditions with empty this.state.', () => {
+    const { component } = setup();
+
+    //console.log(component.debug());
 
     expect(component.find(ConditionItem).length).toBe(0);
+    expect(component.contains(<div>Loading...</div>)).toBe(true);
   });
 
   it('there is a new condition link', () => {

@@ -1,19 +1,19 @@
-import expect from 'expect';
+import {expect} from '../../test_helper';
 import {FETCH_CONDITIONS} from '../../actions/index';
 import ConditionsReducer from '../reducer-conditions';
 
 describe('Conditions Reducer', () => {
 
-  it('should return initial-state', () => {
-    expect(ConditionsReducer(undefined, {})).toEqual({ all: [] });
+  it('handles action with unknown type', () => {
+    expect(ConditionsReducer(undefined, {})).to.eql({ all: [] });
   });
 
-  it('should handle FETCH_CONDITIONS', () => {
+  it('handles action of type FETCH_CONDITIONS', () => {
     expect(ConditionsReducer([], {
       type: FETCH_CONDITIONS,
       payload: [{title: 'xyz'}]
     })
-  ).toEqual({ all: [{title: 'xyz'}] });
+  ).to.eql({ all: [{title: 'xyz'}] });
   });
 
 

@@ -1,20 +1,16 @@
 import React from 'react';
-import expect from 'expect';
-import { shallow, mount, render } from 'enzyme';
+import  {renderComponent, expect}  from '../../test_helper';
 import Header from '../header';
 
-describe('Header' , () => {
+describe('App' , () => {
+  let component;
+  beforeEach(() => {
+    component = renderComponent(Header);
+  })
 
-  it('renders header', () => {
-    const wrapper = shallow(<Header />);
-
-    //console.log(wrapper.debug());
-
-    expect(wrapper.contains(<div>This is the header component</div>))
-      .toEqual(true);
-
+  it('shows a header', () => {
+    expect(component).to.have.class('header');
   });
-
 
 
 });

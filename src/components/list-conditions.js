@@ -31,7 +31,7 @@ export class ListConditions extends Component
     }
 
     return(
-      <div>
+      <div className="list-conditions">
         List of conditions...
         <Link to="/cond/new">New Condition</Link>
 

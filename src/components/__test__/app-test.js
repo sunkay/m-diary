@@ -1,19 +1,16 @@
 import React from 'react';
-import  expect  from 'expect';
-import { shallow, mount, render } from 'enzyme';
+import  {renderComponent, expect}  from '../../test_helper';
 import App from '../app';
 
 describe('App' , () => {
+  let component;
+  beforeEach(() => {
+    component = renderComponent(App);
+  })
 
-  it('renders something', () => {
-    const wrapper = shallow(<App />);
-
-    //console.log(wrapper.debug());
-
-    expect(wrapper.children().length).toBe(2);
-
+  it('shows a header', () => {
+    expect(component.find('.header')).to.exist;
   });
-
 
 
 });

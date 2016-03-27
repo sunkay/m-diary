@@ -1,8 +1,9 @@
- import { renderComponent, expect } from '../../test_helper';
+import { renderComponent, expect } from '../../test_helper';
 import ConditionsList from '../conditions-list';
+import spyOnReactClass from 'sinon-spy-react';
 
 describe('ConditionsList', () => {
-  let component;
+  let component, spy;
 
   beforeEach(() => {
     const conditions = { conditions: {
@@ -11,6 +12,7 @@ describe('ConditionsList', () => {
         {title: 'knee sprain', desc: 'severe pain in the knee'}
         ]
     }};
+    spy = spyOnReactClass(ConditionsList, 'componentDidMount');
     component = renderComponent(ConditionsList, null, conditions);
     //console.log(component);
   });

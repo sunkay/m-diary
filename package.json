@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "mocha --compilers js:babel-core/register --require mock-css-modules --harmony-proxies --require ./src/test_helper.js 'src/**/*-test.js'",
+    "test": "mocha --compilers js:babel-core/register --require mock-css-modules --harmony-proxies --require ./src/test_jsdom.js --require ./src/test_helper.js 'src/**/*-test.js'",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Sunkay",
@@ -27,6 +27,8 @@
     "mocha": "^2.4.5",
     "mock-css-modules": "^1.0.0",
     "react-addons-test-utils": "^0.14.7",
+    "sinon": "^1.17.3",
+    "sinon-spy-react": "^1.0.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",

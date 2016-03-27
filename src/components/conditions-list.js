@@ -4,9 +4,9 @@ import { fetchConditions } from '../actions/index';
 
 class ConditionsList extends Component
 {
-  //componentWillMount(){
-  //  this.props.fetchConditions();
-  //}
+  componentWillMount(){
+    this.props.fetchConditions();
+  }
 
   render(){
     const list = this.props.conditions.map(cond => {

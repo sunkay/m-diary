@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "mocha --compilers js:babel-core/register --require mock-css-modules --harmony-proxies --require ./src/test_jsdom.js --require ./src/test_helper.js 'src/**/*-test.js'",
+    "test": "mocha --compilers js:babel-core/register --require mock-css-modules --harmony-proxies --require ./src/enzyme_setup.js 'src/**/*-test.js'",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Sunkay",
@@ -22,6 +22,7 @@
     "chai-jquery": "^2.0.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.0.0",
+    "exenv": "^1.2.0",
     "jquery": "^2.2.2",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",

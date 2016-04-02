@@ -1,4 +1,4 @@
-import {expect} from '../../test_helper';
+import {expect} from 'chai';
 import {fetchConditions, FETCH_CONDITIONS} from '../index';
 
 describe('Actions', () => {

@@ -1,4 +1,4 @@
-import {expect} from '../../test_helper';
+import {expect} from 'chai';
 import {FETCH_CONDITIONS} from '../../actions/index';
 import ConditionsReducer from '../reducer-conditions';
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import  {renderComponent, expect}  from '../../test_helper';
+import {expect} from 'chai';
+import {mount} from 'enzyme';
 import App from '../app';
 
 describe('App' , () => {
   let component;
   beforeEach(() => {
-    component = renderComponent(App);
+    component = mount(<App />);
   })
 
   it('shows a header', () => {

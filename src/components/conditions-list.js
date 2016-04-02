@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchConditions } from '../actions/index';
 
-class ConditionsList extends Component
+export class ConditionsList extends Component
 {
-  //componentWillMount(){
-  //  this.props.fetchConditions();
-  //}
+  componentDidMount(){
+    this.props.fetchConditions();
+  }
 
   render(){
+    if(!this.props.conditions){
+      return(
+        <div>loading...</div>
+      );
+    }
+
     const list = this.props.conditions.map(cond => {
       return <li key={cond.title}>
         {cond.title}

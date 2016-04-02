@@ -1,15 +1,16 @@
 import React from 'react';
-import  {renderComponent, expect}  from '../../test_helper';
+import  {expect}  from 'chai';
+import {mount} from 'enzyme';
 import Header from '../header';
 
-describe('App' , () => {
+describe('header' , () => {
   let component;
   beforeEach(() => {
-    component = renderComponent(Header);
+    component = mount(<Header />);
   })
 
   it('shows a header', () => {
-    expect(component).to.have.class('header');
+    expect(component.find('.header')).to.have.length(1);
   });
 
 

@@ -38,6 +38,7 @@ it('shows each condition that is provided', () => {
 it('handles null props', () => {
   const component = shallow(<ConditionsList />);
   expect(component.find('li').length).to.equal(0);
+  expect(component.contains('loading...')).to.equal(true);
 });
 
 it('fetchConditions is called when component is mounted', () => {

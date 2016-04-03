@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchConditions } from '../actions/index';
+import ConditionItem from './condition-item';
 
 export class ConditionsList extends Component
 {
@@ -16,13 +17,11 @@ export class ConditionsList extends Component
     }
 
     const list = this.props.conditions.map(cond => {
-      return <li key={cond.title}>
-        {cond.title}
-      </li>
-    })
+      return <ConditionItem title={cond.title} desc={cond.desc}/>
+    });
 
     return(
-      <ul className="conditions-list">
+      <ul className="conditions-list list-group">
         {list}
       </ul>
     );

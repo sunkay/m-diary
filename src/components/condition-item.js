@@ -2,9 +2,9 @@ import React from 'react';
 
 export default (props) => {
   return(
-    <tr className="condition-item">
-      <th>{props.title}</th>
-      <th>{props.desc}</th>
-    </tr>
+    <li className="condition-item list-group-item">
+      <h4 className="list-group-item-heading">{props.title}</h4>
+      <p className="list-group-item-text">{props.desc}</p>
+    </li>
   );
 }

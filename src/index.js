@@ -14,9 +14,13 @@ console.log('NODE_ENV=',process.env.NODE_ENV);
 if (process.env.NODE_ENV === `development` || !process.env.NODE_ENV) {
   const createLogger = require(`redux-logger`);
   const logger = createLogger({
-    collapsed: true
+    collapsed: true,
+    predicate: (getState, action) =>
+        action.type !== 'redux-form/CHANGE' &&
+        action.type !== 'redux-form/BLUR' &&
+        action.type !== 'redux-form/FOCUS'
   });
-  middlewares.push(logger);
+  //middlewares.push(logger);
 }
 
 const createStoreWithMiddleware =

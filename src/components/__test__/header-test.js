@@ -13,5 +13,7 @@ describe('header' , () => {
     expect(component.find('.header')).to.have.length(1);
   });
 
-
+  it('shows a add condition button', () => {
+    expect(component.find('#add-condition')).to.have.length(1);
+  })
 });

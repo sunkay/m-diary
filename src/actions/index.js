@@ -1,18 +1,41 @@
-const conditions_fixture = [
-  {title: 'headache', desc: 'severe pain like migranes'},
-  {title: 'knee sprain', desc: 'severe pain in the knee'},
-  {title: 'Sholder pain', desc: 'Shoulder pain'},
-  {title: 'Low back pain', desc: 'Low back issues'},
-  {title: 'Arthritis', desc: 'Pain in the joints'},
-];
+import firebase from 'firebase';
 
 
-export const FETCH_CONDITIONS = 'FETCH_CONDITIONS';
+const fbref_url = "https://m-diary.firebaseio.com/conditions";
+const fbref = new firebase(fbref_url);
 
-export function fetchConditions(){
-  //console.log("actions: fetchConditions");
+export const RECEIVE_CONDITIONS = 'RECEIVE_CONDITIONS';
+export function receiveConditions(data){
   return {
-    type: FETCH_CONDITIONS,
-    payload: conditions_fixture
+    type: RECEIVE_CONDITIONS,
+    payload: data,
+    isFetching: false
+  }
+}
+
+export const REQUEST_CONDITIONS = 'REQUEST_CONDITIONS';
+export function requestConditions(){
+  return {
+    type: REQUEST_CONDITIONS,
+    isFetching: true
+  }
+}
+
+
+export function fetchConditionsFromFB(){
+  return (dispatch) => {
+    dispatch(requestConditions());
+    fbref.on('value', snapshot => {
+      const data = [];
+      snapshot.forEach(item => {
+        data.push({
+          id: item.key(),
+          fields: item.val()
+        });
+      });
+      dispatch(receiveConditions(data));
+    }, error => {
+      console.log("The read failed: " + error.code);
+    });
   }
 }

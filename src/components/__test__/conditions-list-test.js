@@ -8,23 +8,30 @@ import ConditionItem from '../condition-item';
 
 describe('ConditionsList', () => {
   const conditions = { conditions: [
-      {title: 'headache', desc: 'severe pain like migranes'},
-      {title: 'knee sprain', desc: 'severe pain in the knee'}
-    ]
-  };
-  const props = {
-    fetchConditions: sinon.spy(),
-    ...conditions
-  };
+    {
+      id:1,
+      fields: {title: 'headache', description: 'severe pain like migranes'}
+    },
+    {
+      id:2,
+      fields:   {title: 'knee sprain', description: 'severe pain in the knee'},
+    }
+  ]
+};
+const props =  {
+  fetchConditions: sinon.spy(),
+  fetchConditionsFromFB: sinon.spy(),
+  ...conditions
+};
 
 function setup(){
 
-    const component = shallow(
-      <ConditionsList {...props} />
-    );
-    return{
-      component: component
-    }
+  const component = shallow(
+    <ConditionsList {...props} />
+  );
+  return{
+    component: component
+  }
 }
 
 it('shows a ConditionItem for each condition', () => {
@@ -54,7 +61,7 @@ it('fetchConditions is called when component is mounted', () => {
   const component = mount(<ConditionsList {...props}/>);
 
   //console.log("mounted:   ", component.debug());
-  expect(props.fetchConditions.calledOnce).to.equal(true);
+  expect(props.fetchConditionsFromFB.calledOnce).to.equal(true);
 });
 
 

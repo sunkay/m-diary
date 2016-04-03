@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/sunkay/m-diary.git",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "NODE_ENV=development webpack-dev-server",
     "build": "webpack",
     "test": "mocha --compilers js:babel-core/register --require mock-css-modules --harmony-proxies --require ./src/enzyme_setup.js 'src/**/*-test.js'",
     "test:watch": "npm run test -- --watch"
@@ -37,11 +37,14 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
+    "firebase": "^2.4.2",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1"
   }
 }

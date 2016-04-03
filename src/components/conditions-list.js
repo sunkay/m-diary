@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchConditions } from '../actions/index';
+import * as actions from '../actions/index';
 import ConditionItem from './condition-item';
 
 export class ConditionsList extends Component
 {
   componentDidMount(){
-    this.props.fetchConditions();
+    this.props.fetchConditionsFromFB();
   }
 
   render(){
-    if(!this.props.conditions){
+    if(!this.props.conditions || this.props.isFetching){
       return(
         <div>loading...</div>
       );
     }
 
     const list = this.props.conditions.map(cond => {
-      return <ConditionItem title={cond.title} desc={cond.desc}/>
+      return <ConditionItem
+        key={cond.id}
+        title={cond.fields.title}
+        desc={cond.fields.description}/>
     });
 
     return(
@@ -31,8 +34,9 @@ export class ConditionsList extends Component
 
 function mapStateToProps(state){
   return {
-    conditions: state.conditions.all
+    conditions: state.conditions.all,
+    isFetching: state.conditions.isFetching
   }
 }
 
-export default connect(mapStateToProps, {fetchConditions})(ConditionsList);
+export default connect(mapStateToProps, actions)(ConditionsList);

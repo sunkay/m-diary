@@ -9,6 +9,11 @@ export class ConditionsList extends Component
     this.props.fetchConditionsFromFB();
   }
 
+  deleteHandler(id){
+    //console.log("In conditionList deleteHandler", id);
+    this.props.deleteCondition(id);
+  }
+
   render(){
     if(!this.props.conditions || this.props.isFetching){
       return(
@@ -19,9 +24,11 @@ export class ConditionsList extends Component
     const list = this.props.conditions.map(cond => {
       return <ConditionItem
         key={cond.id}
+        id={cond.id}
         title={cond.fields.title}
+        onDeleteClick={this.deleteHandler.bind(this)}
         desc={cond.fields.description}/>
-    });
+    }, this);
 
     return(
       <ul className="conditions-list list-group">

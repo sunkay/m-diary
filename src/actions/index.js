@@ -15,6 +15,17 @@ export function newCondition(props){
   }
 }
 
+export const DELETE_CONDITION = 'DELETE_CONDITION';
+export function deleteCondition(id){
+  //console.log("deleteCondition ID:", id);
+  // delete the record in firebase
+  fbref.child(id).remove();
+
+  return{
+    type: DELETE_CONDITION,
+  }
+}
+
 
 export const RECEIVE_CONDITIONS = 'RECEIVE_CONDITIONS';
 export function receiveConditions(data){

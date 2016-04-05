@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 import { newCondition } from '../actions/index';
 
 
-class ConditionNew extends Component{
+export class ConditionNew extends Component{
   static contextTypes = {
     router: PropTypes.object
   }

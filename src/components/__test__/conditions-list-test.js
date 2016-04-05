@@ -21,6 +21,7 @@ describe('ConditionsList', () => {
 const props =  {
   fetchConditions: sinon.spy(),
   fetchConditionsFromFB: sinon.spy(),
+  deleteHandler: sinon.spy(),
   ...conditions
 };
 
@@ -43,11 +44,10 @@ it('shows a ConditionItem for each condition', () => {
 
 it('shows condition title and desc', () => {
   const { component } = setup();
+  //console.log(component.debug());
 
-  const node1 = <ConditionItem title="headache" desc="severe pain like migranes" />;
-  const node2 = <ConditionItem title="knee sprain" desc="severe pain in the knee" />
-  expect(component.contains(node1)).to.equal(true);
-  expect(component.contains(node2)).to.equal(true);
+  expect(component.find({title: 'headache'})).to.have.length(1);
+  expect(component.find({title: 'knee sprain'})).to.have.length(1);
 });
 
 it('handles null props', () => {

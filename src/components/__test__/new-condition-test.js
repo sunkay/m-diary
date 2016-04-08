@@ -7,6 +7,9 @@ import { ConditionNew } from '../new-condition';
 describe('ConditionNew', () => {
   const props =  {
     handleSubmit: sinon.spy(),
+    params: {
+      id: 10
+    },
     fields: {
       title: '',
       description: ''

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import {Link} from 'react-router';
-import { newCondition } from '../actions/index';
+import { newCondition, fetchCondition, resetCondition, editCondition } from '../actions/index';
 
 
 export class ConditionNew extends Component{
@@ -9,8 +9,22 @@ export class ConditionNew extends Component{
     router: PropTypes.object
   }
 
+  componentDidMount(){
+    if(this.props.params.id){
+      this.props.fetchCondition(this.props.params.id);
+    }
+  }
+
+  componentWillUnmount(){
+    this.props.resetCondition();
+  }
+
   onSubmit(formProps){
-    this.props.newCondition(formProps);
+    if(this.props.params.id)
+      this.props.editCondition(this.props.params.id, formProps);
+    else
+      this.props.newCondition(formProps);
+
     this.context.router.push('/');
   }
 
@@ -19,7 +33,7 @@ export class ConditionNew extends Component{
 
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h3>Create a new condition</h3>
+        <h3>{this.props.params.id? 'Edit' : 'Create'} a condition</h3>
         <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : '' }`}>
           <label>Title</label>
           <input type="text" placeholder="title" className="form-control" {...title}/>
@@ -54,8 +68,14 @@ function validate(values)
   return errors;
 }
 
-export default reduxForm({
-  form: 'ConditionNew',
-  fields: ['title', 'description'],
-  validate
-}, null, {newCondition} )(ConditionNew);
+export default reduxForm(
+  {
+    form: 'ConditionNew',
+    fields: ['title', 'description'],
+    validate
+  },
+  state => ({ // mapStateToProps
+    initialValues: state.conditions.condition, // will pull state into form's initialValues
+  }),
+  {newCondition, fetchCondition, resetCondition, editCondition}
+)(ConditionNew);

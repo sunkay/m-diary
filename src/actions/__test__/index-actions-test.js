@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import {
-  receiveConditions, RECEIVE_CONDITIONS
+  receiveConditions, RECEIVE_CONDITIONS,
+  fetchCondition, FETCH_CONDITION
 } from '../index';
 
 describe('Actions', () => {
@@ -22,5 +23,12 @@ describe('Actions', () => {
     expect(receiveConditions(conditions).payload.length).to.equal(2);
 
   });
+
+  it('FETCH_CONDITION', () => {
+
+    expect(fetchCondition('-K0TjlcKWNcEfotatvaj').type).to.equal(FETCH_CONDITION);
+
+  });
+
 
 });

@@ -17,12 +17,42 @@ export function newCondition(props){
 
 export const DELETE_CONDITION = 'DELETE_CONDITION';
 export function deleteCondition(id){
-  //console.log("deleteCondition ID:", id);
   // delete the record in firebase
   fbref.child(id).remove();
 
   return{
     type: DELETE_CONDITION,
+  }
+}
+
+export const EDIT_CONDITION = 'EDIT_CONDITION';
+export function editCondition(id, props){
+  // add data to firebase
+  fbref.child(id).set(props);
+
+  return{
+    type: EDIT_CONDITION,
+  }
+}
+
+
+export const FETCH_CONDITION = 'FETCH_CONDITION';
+export function fetchCondition(id){
+  var data = {};
+  fbref.child(id).once('value', function(snap) {
+    data = snap.val();
+  });
+
+  return{
+    type: FETCH_CONDITION,
+    payload: data
+  }
+}
+
+export const RESET_CONDITION = 'RESET_CONDITION';
+export function resetCondition(){
+  return{
+    type: RESET_CONDITION,
   }
 }
 

@@ -11,5 +11,6 @@ export default(
   <Route path="/" component={App}>
     <IndexRoute component={ConditionsList} />
     <Route path="cond/new" component={NewCondition} />
+    <Route path="cond/edit/:id" component={NewCondition} />
   </Route>
 );

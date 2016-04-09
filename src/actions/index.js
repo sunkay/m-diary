@@ -42,7 +42,7 @@ export function fetchCondition(id){
   fbref.child(id).once('value', function(snap) {
     data = snap.val();
   });
-
+  console.log("fetchCondition ", data, id);
   return{
     type: FETCH_CONDITION,
     payload: data

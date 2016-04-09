@@ -10,6 +10,7 @@ export class ConditionNew extends Component{
   }
 
   componentDidMount(){
+    console.log("componentDidMount: ID", this.props.params.id);
     if(this.props.params.id){
       this.props.fetchCondition(this.props.params.id);
     }

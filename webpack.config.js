@@ -8,9 +8,9 @@ process.env.BABEL_ENV = TARGET;
 
 
 const PATHS = {
-  app: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'build'),
-  style: path.join(__dirname, 'style')
+  app: path.resolve(__dirname, 'src'),
+  build: path.resolve(__dirname, 'build'),
+  style: path.resolve(__dirname, 'style')
 };
 
 console.log("webpack PATHS: ", PATHS.app, PATHS.build);

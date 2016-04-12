@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import {Link} from 'react-router';
-import { newCondition, fetchCondition, resetCondition, editCondition } from '../actions/index';
+import { newCondition, fetchCondition, resetCondition, editCondition } from '../actions/conditions';
 
 
 export class ConditionNew extends Component{

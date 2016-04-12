@@ -1,0 +1,4 @@
+--colors
+--webpack-config webpack.config-test.js
+--include src/enzyme_setup.js 
+src/**/*-test.js

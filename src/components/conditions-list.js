@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import * as actions from '../actions/conditions';
 import ConditionItem from './condition-item';
 
 export class ConditionsList extends Component

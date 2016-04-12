@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {
   receiveConditions, RECEIVE_CONDITIONS,
   fetchCondition, FETCH_CONDITION
-} from '../index';
+} from '../conditions';
 
 describe('Actions', () => {
 

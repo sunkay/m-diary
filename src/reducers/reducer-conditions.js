@@ -3,7 +3,7 @@ import {
   RECEIVE_CONDITIONS,
   FETCH_CONDITION,
   RESET_CONDITION
-} from '../actions/index';
+} from '../actions/conditions';
 
 const INITIAL_STATE = {
   all: [],

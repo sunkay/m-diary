@@ -3,7 +3,7 @@ import {
   REQUEST_CONDITIONS,
   RECEIVE_CONDITIONS,
   FETCH_CONDITION
-} from '../../actions/index';
+} from '../../actions/conditions';
 import ConditionsReducer from '../reducer-conditions';
 
 describe('Conditions Reducer', () => {

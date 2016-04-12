@@ -1,13 +1,16 @@
 import firebase from 'firebase';
+import Config from '../config';
 
+export function fbref(){
+  console.log("firebaseURL=", Config.firebase.url);
 
-const fbref_url = "https://m-diary.firebaseio.com/conditions";
-const fbref = new firebase(fbref_url);
+  return new firebase(Config.firebase.url + "conditions");
+}
 
 export const NEW_CONDITION = 'NEW_CONDITION';
 export function newCondition(props){
   // add data to firebase
-  fbref.push(props);
+  fbref().push(props);
 
   return{
     type: NEW_CONDITION,
@@ -18,7 +21,7 @@ export function newCondition(props){
 export const DELETE_CONDITION = 'DELETE_CONDITION';
 export function deleteCondition(id){
   // delete the record in firebase
-  fbref.child(id).remove();
+  fbref().child(id).remove();
 
   return{
     type: DELETE_CONDITION,
@@ -28,7 +31,7 @@ export function deleteCondition(id){
 export const EDIT_CONDITION = 'EDIT_CONDITION';
 export function editCondition(id, props){
   // add data to firebase
-  fbref.child(id).set(props);
+  fbref().child(id).set(props);
 
   return{
     type: EDIT_CONDITION,
@@ -39,7 +42,7 @@ export function editCondition(id, props){
 export const FETCH_CONDITION = 'FETCH_CONDITION';
 export function fetchCondition(id){
   var data = {};
-  fbref.child(id).once('value', function(snap) {
+  fbref().child(id).once('value', function(snap) {
     data = snap.val();
   });
   console.log("fetchCondition ", data, id);
@@ -78,7 +81,7 @@ export function requestConditions(){
 export function fetchConditionsFromFB(){
   return (dispatch) => {
     dispatch(requestConditions());
-    fbref.on('value', snapshot => {
+    fbref().on('value', snapshot => {
       const data = [];
       snapshot.forEach(item => {
         data.push({

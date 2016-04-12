@@ -1,5 +1,5 @@
 module.exports = {
   firebase:{
-    url: "https://m-diary.firebaseio.com/"
+    url: "https://mdiary-test.firebaseio.com/"
   }
 }

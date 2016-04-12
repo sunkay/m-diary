@@ -23,6 +23,7 @@
     "css-loader": "^0.23.1",
     "enzyme": "^2.0.0",
     "exenv": "^1.2.0",
+    "firebase-server": "^0.5.4",
     "jquery": "^2.2.2",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",

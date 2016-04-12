@@ -1,20 +1,20 @@
 import firebase from 'firebase';
 import Config from '../config';
 
-export function fbref(){
-  console.log("firebaseURL=", Config.firebase.url);
-
+function fbref(){
   return new firebase(Config.firebase.url + "conditions");
 }
 
 export const NEW_CONDITION = 'NEW_CONDITION';
 export function newCondition(props){
   // add data to firebase
-  fbref().push(props);
+  const id = fbref().push(props);
+  console.log("URL: ", Config.firebase.url);
 
   return{
     type: NEW_CONDITION,
-    payload: props
+    payload: props,
+    id: id
   }
 }
 
@@ -31,7 +31,7 @@ export function deleteCondition(id){
 export const EDIT_CONDITION = 'EDIT_CONDITION';
 export function editCondition(id, props){
   // add data to firebase
-  fbref().child(id).set(props);
+  fbref().child(id).update(props);
 
   return{
     type: EDIT_CONDITION,

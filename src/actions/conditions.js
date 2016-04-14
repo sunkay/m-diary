@@ -9,7 +9,7 @@ export const NEW_CONDITION = 'NEW_CONDITION';
 export function newCondition(props){
   // add data to firebase
   const id = fbref().push(props);
-  console.log("URL: ", Config.firebase.url);
+  //console.log("URL: ", Config.firebase.url);
 
   return{
     type: NEW_CONDITION,
@@ -45,7 +45,7 @@ export function fetchCondition(id){
   fbref().child(id).once('value', function(snap) {
     data = snap.val();
   });
-  console.log("fetchCondition ", data, id);
+  //console.log("fetchCondition ", data, id);
   return{
     type: FETCH_CONDITION,
     payload: data

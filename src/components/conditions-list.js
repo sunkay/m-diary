@@ -31,7 +31,7 @@ export class ConditionsList extends Component
     }, this);
 
     return(
-      <ul className="conditions-list list-group">
+      <ul className="conditions-list collection">
         {list}
       </ul>
     );

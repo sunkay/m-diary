@@ -59,6 +59,7 @@ if(TARGET === 'start' || !TARGET) {
 
       // Display only errors to reduce the amount of output.
       stats: 'errors-only',
+      headers: { "Access-Control-Allow-Origin": "*" },
 
       // Parse host and port from env so this is easy to customize.
       //

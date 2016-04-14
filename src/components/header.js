@@ -3,9 +3,13 @@ import { Link } from 'react-router';
 
 export default () => {
   return(
-    <div className="header">
-      This is the header component
-      <Link to="/cond/new" id="add-condition">Add Condition</Link>
-    </div>
+    <nav>
+      <div className="header nav-wrapper">
+        <a href="#" className="left brand-logo">MDiary</a>
+        <ul id="nav-mobile" className="right hide-on-small-and-down">
+          <Link to="/cond/new" id="add-condition">Add Condition</Link>
+        </ul>
+      </div>
+    </nav>
   );
 }

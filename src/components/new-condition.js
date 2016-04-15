@@ -21,9 +21,9 @@ export class ConditionNew extends Component{
 
   onSubmit(formProps){
     if(this.props.params.id)
-      this.props.editCondition(this.props.params.id, formProps);
+    this.props.editCondition(this.props.params.id, formProps);
     else
-      this.props.newCondition(formProps);
+    this.props.newCondition(formProps);
 
     this.context.router.push('/');
   }
@@ -34,16 +34,24 @@ export class ConditionNew extends Component{
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>{this.props.params.id? 'Edit' : 'Create'} a condition</h3>
-        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : '' }`}>
-          <label>Title</label>
-          <input type="text" placeholder="title" className="form-control" {...title}/>
-          {title.touched && title.error && <div>{title.error}</div>}
+
+        <div className={`input-field ${title.touched && title.invalid ? 'has-danger' : '' }`}>
+
+          <input type="text" className="validate" {...title}/>
+          <label for="title" >Title</label>
+          {
+            title.touched && title.error &&
+            <div><span className="red-text text-darken-2">{title.error}</span></div>
+          }
         </div>
 
-        <div className={`form-group ${description.touched && description.invalid ? 'has-danger' : '' }`}>
-          <label>Description</label>
-          <input type="text" placeholder="description" className="form-control" {...description}/>
-          {description.touched && description.error && <div>{description.error}</div>}
+        <div className={`input-field ${description.touched && description.invalid ? 'has-danger' : '' }`}>
+          <label for="Description">Description</label>
+          <input type="text" className="validate" {...description}/>
+          {
+            description.touched && description.error &&
+            <div><span className="red-text text-darken-2">{description.error}</span></div>
+          }
         </div>
 
         <button type="submit" className="btn btn-primary">Submit</button>

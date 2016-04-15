@@ -19,6 +19,8 @@ export default class ConditionItem extends Component {
           className="btn-floating btn waves-effect waves-light red">
           <i className="material-icons">delete</i>
         </a>
+
+
       </li>
     );
   }

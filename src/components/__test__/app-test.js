@@ -1,12 +1,12 @@
 import React from 'react';
 import {expect} from 'chai';
-import {mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import App from '../app';
 
 describe('App' , () => {
   let component;
   beforeEach(() => {
-    component = mount(<App />);
+    component = shallow(<App />);
   })
 
   it('shows a header', () => {

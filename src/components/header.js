@@ -9,6 +9,28 @@ export class Header extends Component
     this.props.authenticated? this.props.logout() : this.props.login();
   }
 
+  renderSignInSignOut(authenticated)
+  {
+    if(!authenticated){
+      return(
+        <Link
+          to="/login"
+          id='sign-in'>
+            Sign In
+        </Link>
+      )
+    } else {
+      return(
+        <Link
+          to="#"
+          onClick={this.handleAuth.bind(this)}
+          id='sign-out'>
+            Sign Out
+        </Link>
+      )
+    }
+  }
+
   render(){
     const { authenticated, login, logout } = this.props;
 
@@ -20,12 +42,7 @@ export class Header extends Component
             <ul id="nav-mobile" className="right hide-on-small-and-down">
               <Link to="/cond/new" id="add-condition">Add Condition</Link>
 
-              <Link
-                to="#"
-                onClick={this.handleAuth.bind(this)}
-                id={`${authenticated? 'sign-out' : 'sign-in'}`}>
-                  {`${authenticated? 'Sign Out' : 'Sign In'}`}
-              </Link>
+              {this.renderSignInSignOut(authenticated)}
             </ul>
           </div>
         </nav>

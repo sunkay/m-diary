@@ -35,18 +35,18 @@ export class ConditionNew extends Component{
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>{this.props.params.id? 'Edit' : 'Create'} a condition</h3>
 
-        <div className={`input-field ${title.touched && title.invalid ? 'has-danger' : '' }`}>
+        <div className={`${title.touched && title.invalid ? 'has-danger' : '' }`}>
 
+          <label htmlFor="title" >Title</label>
           <input type="text" className="validate" {...title}/>
-          <label for="title" >Title</label>
           {
             title.touched && title.error &&
             <div><span className="red-text text-darken-2">{title.error}</span></div>
           }
         </div>
 
-        <div className={`input-field ${description.touched && description.invalid ? 'has-danger' : '' }`}>
-          <label for="Description">Description</label>
+        <div className={`${description.touched && description.invalid ? 'has-danger' : '' }`}>
+          <label htmlFor="Description">Description</label>
           <input type="text" className="validate" {...description}/>
           {
             description.touched && description.error &&

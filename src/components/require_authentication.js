@@ -9,12 +9,13 @@ export default function(ComposedComponent){
     }
 
     componentWillMount(){
+      console.log("In Login: ",this.props.location);
+
       if(!this.props.authenticated)
         this.context.router.push('/login');
     }
 
     render(){
-      //console.log("In HOC: ",this.props.authenticated);
       return <ComposedComponent {...this.props}/>
     }
   }

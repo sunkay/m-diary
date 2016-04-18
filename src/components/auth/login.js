@@ -12,6 +12,8 @@ export class Login extends Component{
   onSubmit(formProps){
     this.props.login();
 
+    console.log("In Login: ",this.props.params);
+
     this.context.router.push('/');
   }
 

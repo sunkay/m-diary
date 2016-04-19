@@ -9,10 +9,10 @@ export default function(ComposedComponent){
     }
 
     componentWillMount(){
-      console.log("In Login: ",this.props.location);
+      console.log("In Login: ",this.props.location.pathname);
 
       if(!this.props.authenticated)
-        this.context.router.push('/login');
+        this.context.router.push('/login?redurl='+this.props.location.pathname);
     }
 
     render(){

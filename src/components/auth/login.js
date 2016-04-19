@@ -12,14 +12,17 @@ export class Login extends Component{
   onSubmit(formProps){
     this.props.login();
 
-    console.log("In Login: ",this.props.params);
+    const authRedURL = this.props.location.query.redurl;
+    console.log("redirecting to: ",authRedURL);
 
-    this.context.router.push('/');
+    if(authRedURL)
+      this.context.router.push(authRedURL);
+    else
+      this.context.router.push('/');
   }
 
   render(){
     const { fields: { email, password }, handleSubmit } = this.props;
-
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>LOGIN</h3>

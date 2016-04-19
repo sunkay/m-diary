@@ -14,7 +14,7 @@ export class Header extends Component
     if(!authenticated){
       return(
         <Link
-          to="/login"
+          to="/login?redurl=/"
           id='sign-in'>
             Sign In
         </Link>

@@ -14,6 +14,6 @@ export default(
     <IndexRoute component={ConditionsList} />
     <Route path="cond/new" component={requireAuth(NewCondition)} />
     <Route path="cond/edit/:id" component={requireAuth(NewCondition)} />
-    <Route path="login" component={Login} />
+    <Route path="/login" component={Login} />
   </Route>
 );

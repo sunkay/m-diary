@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {
-  LOGIN,
-  LOGOUT,
+  AUTH_USER,
+  UNAUTH_USER,
 } from '../../actions/auth';
 import AuthReducer from '../reducer-auth';
 
@@ -11,22 +11,16 @@ describe('Auth Reducer', () => {
     expect(AuthReducer(undefined, {})).to.eql({ authenticated: false });
   });
 
-  it('handles action of type LOGIN', () => {
+  it('handles action of type AUTH_USER', () => {
     expect(AuthReducer([], {
-      type: LOGIN,
-      payload: {
-        authenticated: true
-      }
+      type: AUTH_USER
     })
   ).to.eql({ authenticated: true  });
   });
 
   it('handles action of type LOGOUT', () => {
     expect(AuthReducer([], {
-      type: LOGOUT,
-      payload: {
-        authenticated: false
-      }
+      type: UNAUTH_USER
     })
   ).to.eql({ authenticated: false });
   });

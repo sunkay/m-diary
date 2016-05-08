@@ -9,8 +9,9 @@ export class Login extends Component{
     router: PropTypes.object
   }
 
-  onSubmit(formProps){
-    this.props.login();
+  onSubmit({email, password}){
+    console.log(email, password);
+    this.props.login({ email, password });
 
     const authRedURL = this.props.location.query.redurl;
     console.log("redirecting to: ",authRedURL);

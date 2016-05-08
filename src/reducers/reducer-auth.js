@@ -1,6 +1,6 @@
 import {
-  LOGIN,
-  LOGOUT
+  AUTH_USER,
+  UNAUTH_USER
 } from '../actions/auth';
 
 const INITIAL_STATE = {
@@ -10,10 +10,10 @@ const INITIAL_STATE = {
 export default function auth(state = INITIAL_STATE, action){
 
   switch(action.type){
-    case LOGIN:
-      return { ...state, authenticated: action.payload.authenticated }
-    case LOGOUT:
-      return { ...state, authenticated: action.payload.authenticated }
+    case AUTH_USER:
+      return { ...state, authenticated: true }
+    case UNAUTH_USER:
+      return { ...state, authenticated: false }
 
     default:
       return state;

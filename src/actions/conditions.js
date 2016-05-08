@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import Config from '../config';
 
 function fbref(){
-  return new firebase(Config.firebase.url + "conditions");
+  return new firebase(Config.firebase.url + "/conditions");
 }
 
 export const NEW_CONDITION = 'NEW_CONDITION';

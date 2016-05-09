@@ -6,6 +6,7 @@ import {Router, browserHistory, hashHistory} from 'react-router';
 import thunkMiddleware from 'redux-thunk';
 import routes from './routes';
 import reducers from './reducers';
+import {AUTH_USER} from './actions/auth';
 
 const middlewares = [thunkMiddleware];
 
@@ -24,9 +25,17 @@ if (process.env.NODE_ENV === `development` || !process.env.NODE_ENV) {
 
 const createStoreWithMiddleware =
       applyMiddleware(...middlewares)(createStore);
+const store = createStoreWithMiddleware(reducers);
+
+// Check for an already authenticated user
+// ToDo: Serverside validation of token and check expiration
+const token = localStorage.getItem('token');
+if(token){
+  store.dispatch({type: AUTH_USER});
+}
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router history={hashHistory} routes={routes} />
   </Provider>
   , document.querySelector('.container'));

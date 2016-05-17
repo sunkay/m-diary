@@ -1,5 +1,5 @@
 # React Redux app to record medical events
-This repo is to slowly build a redux application with sound architectural designs. TDD is hard and TDD with react/redux is not that easy either. This is an attempt to build this from scratch and document the tdd pitfalls on medium with findings. 
+This repo is to slowly build a redux application with sound architectural designs. TDD is hard and TDD with react/redux is not that easy either. This is an attempt to build this from scratch and document the journey on medium as much as possible
 
 ##Testing react components using enzyme
 Pattern for TDD using react, redux and enzyme
@@ -13,10 +13,27 @@ There are two methods for getting started with this repo.
 Checkout this repo, install depdencies, then start the process with the following:
 
 ```
-	> git clone https://github.com/sunkay/m-diary.git
-	> cd m-diary
-	> npm install
-	> npm start
+	git clone https://github.com/sunkay/m-diary.git
+
+	git clone https://github.com/sunkay/k-auth.git
+
 ```
 
-Interested in learning - check out this awesome tutorial by StephenGrider [Redux](https://www.udemy.com/react-redux/)?
+#### Docker container instructions ####
+This application depends on microservices.
+ - m-diary (web-app)
+ - k-auth (auth microservice)
+ -
+
+ ```
+
+	cd m-diary
+	npm start
+	# docker does not work with webpack since there is an issue with volumes and watch functionality
+	# Issue: https://github.com/docker/docker/issues/18246
+	# Until I find the right solution it is better to use plain old npm start
+	#docker-compose up
+
+	cd k-auth
+	docker-compose up
+ ```

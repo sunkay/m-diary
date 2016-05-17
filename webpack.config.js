@@ -24,6 +24,10 @@ const common = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  watchOptions: {
+    poll: 1000,
+    aggregateTimeout: 1000
+  },
   module: {
     loaders: [{
       exclude: /node_modules/,

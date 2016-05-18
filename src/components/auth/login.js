@@ -40,7 +40,7 @@ export class Login extends Component{
     return(
       <div className="row">
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="col s12">
-          <h3>LOGIN</h3>
+          <h4>LOGIN</h4>
 
           <div className={`${email.touched && email.invalid ? 'has-danger' : '' }`}>
 

@@ -8,12 +8,14 @@ import MainContent from './components/main-content';
 import ConditionsList from './components/conditions-list';
 import NewCondition from './components/new-condition';
 import Login from './components/auth/login';
+import Signup from './components/auth/signup';
 
 export default(
   <Route path="/" component={App}>
     <IndexRoute component={ConditionsList} />
     <Route path="cond/new" component={requireAuth(NewCondition)} />
     <Route path="cond/edit/:id" component={requireAuth(NewCondition)} />
+    <Route path="/signup" component={Signup} />
     <Route path="/login" component={Login} />
   </Route>
 );

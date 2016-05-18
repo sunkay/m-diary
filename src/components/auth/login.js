@@ -66,6 +66,9 @@ export class Login extends Component{
             <Link to="/" className="btn btn-danger">Cancel</Link>
           </div>
         </form>
+        <div className="row center">
+          <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+        </div>
       </div>
     );
   }

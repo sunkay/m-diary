@@ -33,9 +33,12 @@ export default class Signup extends Component{
             <button type="submit" className="btn btn-primary">Submit</button>
             <Link to="/" className="btn btn-danger">Cancel</Link>
           </div>
-
-
         </form>
+
+        <div className="row center">
+          <p>Already have an account? <Link to="/login">Sign in</Link></p>
+        </div>
+
       </div>
     );
   }

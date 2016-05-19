@@ -10,11 +10,11 @@ export default class App extends Component {
       <div>
         <Header />
         {this.props.children}
-          <div className="footer-copyright">
-            <div className="container">
+        <div className="footer-copyright">
+          <div className="container">
             © 2016 Copyright sunkay all rights reserved
-            </div>
           </div>
+        </div>
       </div>
     );
   }

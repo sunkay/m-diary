@@ -19,11 +19,34 @@ export function login({email, password}, url){
         console.log('redirecting to... ', url);
         hashHistory.push(url);
       })
-      .catch(() => {
-        console.log("Error signing in... ");
+      .catch((response) => {
+        console.log("Error signing in... ", response.data);
         dispatch(authError('The email address or password you entered is incorrect.'));
       });
 
+  }
+}
+
+export const SIGNUP_USER = "SIGNUP_USER";
+export function signupUser({email, password}){
+  return function(dispatch){
+    // call authAPI to signup a user
+    axios.post(`${Config.auth.url}/signup`, {email, password})
+      .then(response => {
+        // store the token in localstorage
+        console.log("signed up: ", response.data.token);
+        localStorage.setItem('token', response.data.token);
+
+        // Update state to indicate authenticated user
+        dispatch({type: AUTH_USER});
+
+        // redirect to '/'
+        console.log('redirecting to... ', '/');
+        hashHistory.push('/');
+      })
+      .catch((response) => {
+        dispatch(authError(`Error signing up the user: ${response.data.error}`));
+      });
   }
 }
 

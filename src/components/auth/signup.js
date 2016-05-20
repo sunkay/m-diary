@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+import { signupUser, authError } from '../../actions/auth';
 
 export  class Signup extends Component{
 
   onSubmit({email, password, password_confirm}){
     console.log("Signup: ", {email, password, password_confirm});
+
+    this.props.signupUser({email, password});
+  }
+
+  componentWillUnmount(){
+    this.props.authError('');
+  }
+
+  renderAlert(){
+    if(this.props.errorMessage){
+      return(
+        <div className="chip red row s6">
+          <i className="left material-icons">announcement</i>
+          <strong>
+            {this.props.errorMessage}
+          </strong>
+        </div>
+      );
+    }
   }
 
   render(){
@@ -14,7 +34,7 @@ export  class Signup extends Component{
       <div className="container">
         <div className="row signup">
           <form className="col s12"
-                onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <h4>Signup</h4>
 
             <div className="row">
@@ -47,6 +67,8 @@ export  class Signup extends Component{
               }
             </div>
 
+            {this.renderAlert()}
+
             <div className="row">
               <button type="submit" className="btn btn-primary">Submit</button>
               <Link to="/" className="btn btn-danger">Cancel</Link>
@@ -74,8 +96,16 @@ function validate(values)
   return errors;
 }
 
-export default reduxForm({
-  form: 'SignupForm',
-  fields: ['email', 'password', 'password_confirm'],
-  validate
-})(Signup);
+function mapStateToProps(state){
+  return { errorMessage: state.auth.error };
+}
+
+export default reduxForm(
+  {
+    form: 'SignupForm',
+    fields: ['email', 'password', 'password_confirm'],
+    validate
+  },
+  mapStateToProps,
+  { signupUser, authError }
+)(Signup);

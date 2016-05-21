@@ -7,7 +7,7 @@ export const AUTH_USER = "AUTH_USER";
 export function login({email, password}, url){
   return function(dispatch){
     // sign in with the auth server
-    axios.post(`${Config.auth.url}/signin`, {email, password})
+    return axios.post(`${Config.auth.url}/signin`, {email, password})
       .then(response => {
         // store the token in localstorage
         localStorage.setItem('token', response.data.token);
@@ -20,7 +20,6 @@ export function login({email, password}, url){
         hashHistory.push(url);
       })
       .catch((response) => {
-        console.log("Error signing in... ", response.data);
         dispatch(authError('The email address or password you entered is incorrect.'));
       });
 
@@ -31,10 +30,10 @@ export const SIGNUP_USER = "SIGNUP_USER";
 export function signupUser({email, password}){
   return function(dispatch){
     // call authAPI to signup a user
-    axios.post(`${Config.auth.url}/signup`, {email, password})
+    return axios.post(`${Config.auth.url}/signup`, {email, password})
       .then(response => {
         // store the token in localstorage
-        console.log("signed up: ", response.data.token);
+        //console.log("signed up: ", response.data.token);
         localStorage.setItem('token', response.data.token);
 
         // Update state to indicate authenticated user

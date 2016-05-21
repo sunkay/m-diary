@@ -46,15 +46,17 @@ describe('Auth', () => {
     const expectedActions = [
       {
         type: 'AUTH_USER'
-       }
+      }
     ]
     const store = mockStore({ });
 
     return store.dispatch(login({email: 'x1@y.com', password: '123'}))
     .then(() => {
-      expect(store.getActions()).to.deep.equal(expectedActions)
+      expect(store.getActions()).to.deep.equal(expectedActions);
+      expect(push.called).to.be.true;
     });
 
+  });
 
   it('Signup User', () => {
     nock(Config.auth.url)
@@ -71,16 +73,71 @@ describe('Auth', () => {
     const expectedActions = [
       {
         type: 'AUTH_USER'
-       }
+      }
     ]
     const store = mockStore({ });
 
     return store.dispatch(signupUser({email: 'x1@y.com', password: '123'}))
     .then(() => {
-      expect(store.getActions()).to.deep.equal(expectedActions)
+      expect(store.getActions()).to.deep.equal(expectedActions);
+      expect(push.called).to.be.true;
     });
 
   });
+
+  it('Signup existing User', () => {
+    nock(Config.auth.url)
+    .log(console.log)
+    .post('/signup', {
+      email: 'x1@y.com',
+      password: '123'
+    })
+    .reply(422, {error: 'email in use'});
+
+    // mock the redirect request in the action
+    var push = sandbox.stub(hashHistory, 'push');
+
+    const expectedActions = [
+      {
+        type: 'AUTH_ERROR',
+        payload: 'Error signing up the user: email in use'
+      }
+    ]
+    const store = mockStore({ });
+
+    return store.dispatch(signupUser({email: 'x1@y.com', password: '123'}))
+    .then(() => {
+      expect(store.getActions()).to.deep.equal(expectedActions);
+      expect(push.called).to.be.false;
+    });
+
+  });
+
+  it('Login - No user', () => {
+    nock(Config.auth.url)
+    .log(console.log)
+    .post('/signin', {
+      email: 'x1@y.com',
+      password: '123'
+    })
+    .reply(422, {error: 'unknown'});
+
+    // mock the redirect request in the action
+    var push = sandbox.stub(hashHistory, 'push');
+
+    const expectedActions = [
+      {
+        type: 'AUTH_ERROR',
+        payload: 'The email address or password you entered is incorrect.'
+      }
+    ]
+    const store = mockStore({ });
+
+    return store.dispatch(login({email: 'x1@y.com', password: '123'}))
+    .then(() => {
+      expect(store.getActions()).to.deep.equal(expectedActions);
+      expect(push.called).to.be.false;
+    });
 
   });
 

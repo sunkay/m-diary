@@ -2,7 +2,7 @@
 This repo is to slowly build a redux application with sound architectural designs. TDD is hard and TDD with react/redux is not that easy either. This is an attempt to build this from scratch and document the journey on medium as much as possible
 
 ##Testing react components using enzyme
-Pattern for TDD using react, redux and enzyme
+Create a mocha test harness which uses enzyme to test react components. Testing redux actions is fairly straightforward, but it gets tricky when it is using async actions. Utilized the excellent 'nock' library to intercept http requests. Sinon spy to stub out core functions. Still do not have a good way to test firebase integrations. The best way to test firebase is to create a separate database with test data.
 
 
 ###Getting Started with this repo###
